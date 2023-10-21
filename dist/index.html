@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Number Guess Game</title> 
+        <link rel="stylesheet" href="styles.css">  
+    </head>
+    <body>
+        <h1 id="game-header">Guess The Number</h1>
+        <section id="mode-select-screen">
+            <div class="mode-buttons">
+                <h3>Select A Mode</h3>
+                <button class="mode-button" id="easy">Easy</button>
+                <button class="mode-button" id="medium">Medium</button>
+                <button class="mode-button" id="hard">Hard</button>
+            </div>
+        </section>
+        <main class="hidden" id="main">
+            <p id="description">Guess the number that the computer has randomly picked.</p>
+            <h2 id="round"></h2>
+            <p class="small-text" id="number-range">The range is from: </p>
+            <input type="text" id="player-input"> </input>
+            <p class="small-text">Enter your guess in the box above. Whole numbers only.</p>
+            <button id="submit">Submit</button>
+            <p id="over-or-under"></p>
+        </main>
+    </body>
+    <script type="module" src="main.js"></script>
+</html>
