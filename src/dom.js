@@ -1,36 +1,10 @@
-function showMainScreen() {
-    let easyModeButton = document.getElementById('easy');
-    let mediumModeButton = document.getElementById('medium');
-    let hardModeButton = document.getElementById('hard');
-    easyModeButton.addEventListener('click', function() {
-        let modeScreen = document.getElementById('mode-select-screen');
-        let mainScreen = document.getElementById('main')
-        modeScreen.classList.add('hidden');
-        mainScreen.classList.remove('hidden');
-        
-    })
-    mediumModeButton.addEventListener('click', function() {
-        let modeScreen = document.getElementById('mode-select-screen');
-        let mainScreen = document.getElementById('main')
-        modeScreen.classList.add('hidden');
-        mainScreen.classList.remove('hidden');
-        
-    })
-    hardModeButton.addEventListener('click', function() {
-        let modeScreen = document.getElementById('mode-select-screen');
-        let mainScreen = document.getElementById('main')
-        modeScreen.classList.add('hidden');
-        mainScreen.classList.remove('hidden');
-        
-    })
-}
-
-function displayRound(round) {
+// function that displays the round and tries remaining
+function displayRoundAndTries(round, tries) {
     let roundContainer = document.getElementById('round');
-    roundContainer.textContent = `Round ${round}`;
+    roundContainer.textContent = `Round ${round}. Tries Left: ${tries}`;
 }
 
-
+// function that displays the range of numbers to guess from (dependent on mode)
 function displayNumberRange(round) {
     let rangeContainer = document.getElementById('number-range');
     if (round <= 10) {
@@ -42,8 +16,8 @@ function displayNumberRange(round) {
     }
 }
 
-
-function displayResponse(relativeGuess) {
+// function that displays whether the player's guess is over, under or correct
+function displayResponse(relativeGuess, tries) {
     let overOrUnderContainer = document.getElementById('over-or-under');
         if (relativeGuess == 0) {
             overOrUnderContainer.textContent = "Correct Guess!";
@@ -56,4 +30,4 @@ function displayResponse(relativeGuess) {
 }
 
 
-export { displayResponse, displayRound, displayNumberRange, showMainScreen };
+export { displayResponse, displayRoundAndTries, displayNumberRange };
