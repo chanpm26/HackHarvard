@@ -7,13 +7,15 @@
         <link rel="stylesheet" href="styles.css">  
     </head>
     <body>
-        <header id="header"> 
+        <section id="header-left">
+            <button id="home">Home</button>
+        </section>
+        <section id="header-right"> 
             <button id="login">Login</button>
             <button id="register">Register</button>
-        </header>
-
+        </section>
         <h1 id="game-header">Guess The Number</h1>
-        <section id="mode-select-screen">
+        <section class="screen" id="mode-select-screen">
             <div class="mode-buttons">
                 <h3>Select A Mode</h3>
                 <button class="mode-button" id="easy">Easy</button>
@@ -21,7 +23,7 @@
                 <button class="mode-button" id="hard">Hard</button>
             </div>
         </section>
-        <main class="hidden" id="main">
+        <main class="screen hidden" id="main">
             <p id="description">Guess the number that the computer has randomly picked.</p>
             <h2 id="round"></h2>
             <p class="small-text" id="number-range">The range is from: </p>
@@ -31,6 +33,25 @@
             <p id="over-or-under"></p>
         </main>
         <footer id="footer">Built for HackHarvard 2023</footer>
+        <section class="screen hidden" id="login-popup">
+            <form class=" popup" id="login-form" method="POST" action="">
+                <label for="login-username">Username</label>
+                <input name="login-username" id="login-username" type="text">
+                <label for="login-password">Password</label>
+                <input name="login-password" id="login-password" type="text">
+                <submit id="login-submit">Sign In</submit>
+            </form>
+
+        </section>
+        <section class="hidden screen" id="register-popup">
+            <form class="popup" id="register-form" method="POST" action="">
+                <label for="register-username">Username</label>
+                <input name="register-username" id="register-username" type="text">
+                <label for="register-password">Password</label>
+                <input name="register-password" id="register-password" type="text">
+                <submit id="register-submit">Register</submit>
+            </form>
+        </section>
     </body>
     <script type="module" src="main.js"></script>
 </html>
