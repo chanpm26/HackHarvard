@@ -12,7 +12,6 @@ function playGame(mode, tries) {
     displayRoundAndTries(round, tries);
     displayNumberRange(round);
         let targetNumber = generateRandomNumber(round);
-        console.log(targetNumber);
         inputForm.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 // updates the tries # parameter if the guess was incorrect
