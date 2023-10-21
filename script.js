@@ -1,60 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Register function
-    const registerUser = (event) => {
-        event.preventDefault();
+    const handleFormSubmit = (url, formId) => {
+        return (event) => {
+            event.preventDefault();
+            const formData = new URLSearchParams(new FormData(event.target)).toString();
 
-        const formData = new URLSearchParams(new FormData(event.target)).toString();
-
-        fetch('/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: formData
-        })
-        .then(response => response.text())
-        .then(message => {
-            alert(message);
-            if (message.includes("successfully")) {
-                document.getElementById("registerForm").reset(); // Clear the form if registration is successful
-            }
-        })
-        .catch(error => {
-            console.error("Error during registration:", error);
-            alert("An error occurred. Please try again.");
-        });
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not successful.");
+                }
+                return response.text();
+            })
+            .then(message => {
+                alert(message);
+                if (message.includes("successfully") || message.includes("Login successful")) {
+                    document.getElementById(formId).reset();
+                }
+                if (message.includes("Login successful")) {
+                    // Redirect to a index or another route
+                    window.location.href = "/index.html"; 
+                }
+            })
+            .catch(error => {
+                console.error(`Error during ${url.slice(1)}:`, error);
+                alert("An error occurred. Please try again.");
+            });
+        };
     };
 
-    // Login function
-    const loginUser = (event) => {
-        event.preventDefault();
-
-        const formData = new URLSearchParams(new FormData(event.target)).toString();
-
-        fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: formData
-        })
-        .then(response => response.text())
-        .then(message => {
-            alert(message);
-            if (message.includes("successful")) {
-                document.getElementById("loginForm").reset(); 
-                //need to add redirect or do some action after a successful login here
-            }
-        })
-        .catch(error => {
-            console.error("Error during login:", error);
-            alert("An error occurred. Please try again.");
-        });
-    };
-
-    // Event listeners
-    document.getElementById("registerForm").addEventListener("submit", registerUser);
-    document.getElementById("loginForm").addEventListener("submit", loginUser);
-
+    document.getElementById("registerForm").addEventListener("submit", handleFormSubmit('/register', "registerForm")); // registerForm is the id of the form
+    document.getElementById("loginForm").addEventListener("submit", handleFormSubmit('/login', "loginForm")); // loginForm is the id of the form
 });
+
+// Game save function to local storage
+function save() {
+    localStorage.setItem('player', JSON.stringify(player));
+    localStorage.setItem('score', JSON.stringify(score));
+}
+// Load game data from local storage
+function load() {
+    player = JSON.parse(localStorage.getItem('player'));
+    score = JSON.parse(localStorage.getItem('score'));
+}

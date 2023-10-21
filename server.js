@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const crypto = require('crypto');
 
@@ -41,27 +40,27 @@ connection.connect((err) => {
     console.log('Connected to the MySQL database.');
     setupDatabase();
 });
-
-// Middleware to parse the request body as JSON
-app.use(bodyParser.urlencoded({ extended: true }));
+// Set up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Routes for our API
+// Register a new user in the database
 app.post('/register', (req, res) => {
     const { username, password } = req.body;
     const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
+
     const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
 
     connection.query(query, [username, hashedPassword], (error, results) => {
         if (error) {
             console.error("Error registering user:", error);
-            return res.sendStatus(500);
+            return res.status(500).send("Error registering user.");
         }
         res.send("User registered successfully!");
     });
 });
 
-// Login route
+// Login route for the user
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
@@ -70,8 +69,9 @@ app.post('/login', (req, res) => {
     connection.query(query, [username, hashedPassword], (error, results) => {
         if (error) {
             console.error("Error during login:", error);
-            return res.sendStatus(500);
+            return res.status(500).send("Error during login.");
         }
+
         if (results.length > 0) {
             res.send("Login successful!");
         } else {
@@ -80,7 +80,7 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Start the server and what port its on.
+// Start the server on Port 3000, Can change if needed
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
