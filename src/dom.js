@@ -24,7 +24,7 @@ function displayResponse(relativeGuess, tries) {
         } else if (relativeGuess == -1) {
             overOrUnderContainer.textContent = "(Your guess is too small)";
         } else {
-            overOrUnderContainer.textContent = "(Your guess is too big)";
+            overOrUnderContainer.textContent = "(Your guess is too large)";
     
     }
 }

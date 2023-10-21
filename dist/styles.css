@@ -61,6 +61,7 @@ h2 {
     padding-bottom: 0;
     margin-bottom: 0;
     font-size: 3rem;
+    margin-top: 10vh;
 }
 
 h3 {
@@ -103,5 +104,12 @@ button {
 .small-text {
     font-style: italic;
     font-size: 0.9rem;
+}
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 4rem;
+    }
+
 
 }
