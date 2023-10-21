@@ -80,6 +80,7 @@ app.post('/login', (req, res) => {
             res.json({ message: "Invalid username or password." });
         }
         
+    });
 });
 
 // Start server on port 3000
@@ -94,4 +95,3 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
