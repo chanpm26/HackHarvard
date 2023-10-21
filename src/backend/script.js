@@ -18,16 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 return response.text();
             })
-            .then(message => {
-                alert(message);
-                if (message.includes("successfully") || message.includes("Login successful")) {
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.message.includes("successfully") || data.message.includes("Login successful")) {
                     document.getElementById(formId).reset();
                 }
-                if (message.includes("Login successful")) {
+                if (data.message.includes("Login successful")) {
                     // Redirect to a dashboard or another route
                     window.location.href = "/dashboard"; 
                 }
-            })
+            })            
             .catch(error => {
                 console.error(`Error during ${url.slice(1)}:`, error);
                 alert("An error occurred. Please try again.");

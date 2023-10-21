@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const crypto = require('crypto');
+const path = require('path');
 
 const app = express();
 
@@ -74,11 +75,11 @@ app.post('/login', (req, res) => {
         }
 
         if (results.length > 0) {
-            res.send("Login successful!");
+            res.json({ message: "Login successful!", user: results[0] });
         } else {
-            res.send("Invalid username or password.");
+            res.json({ message: "Invalid username or password." });
         }
-    });
+        
 });
 
 // Start server on port 3000
@@ -86,3 +87,11 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+// Serve static files (HTML, JS, CSS) from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
