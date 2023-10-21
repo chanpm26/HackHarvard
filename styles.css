@@ -106,6 +106,26 @@ button {
     font-size: 0.9rem;
 }
 
+header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 1vw;
+    margin-top: 1vh;
+    margin-right: .5vw;
+}
+
+header > button {
+    font-size: 1rem !important;
+    margin:0;
+    padding: 0;
+    background-color: #A51C30;
+    color: white;
+    border: none;
+    font-family: 'Noto Serif Malayalam', serif;
+}
+
 footer {
     position: absolute;
     left: 0;
