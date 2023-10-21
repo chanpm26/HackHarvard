@@ -12,13 +12,13 @@ const connection = mysql.createConnection({
     database: 'users'
 });
 
-// Create the database if it doesn't already exist
+// Create database if it doesn't exist
 const setupDatabase = () => {
     const createTableQuery = `
         CREATE TABLE IF NOT EXISTS users (
             id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
             username VARCHAR(15) NOT NULL UNIQUE,
-            password VARCHAR(256) NOT NULL
+            password VARCHAR(60) NOT NULL
         );
     `;
 
@@ -31,7 +31,7 @@ const setupDatabase = () => {
     });
 };
 
-// Connect to the database
+// Connect to database
 connection.connect((err) => {
     if (err) {
         console.error('Error connecting to the database:', err);
@@ -40,11 +40,12 @@ connection.connect((err) => {
     console.log('Connected to the MySQL database.');
     setupDatabase();
 });
-// Set up the Express app to handle data parsing
+
+// Middleware to parse request body
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Register a new user in the database
+// Routes for register and login
 app.post('/register', (req, res) => {
     const { username, password } = req.body;
     const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
@@ -60,7 +61,7 @@ app.post('/register', (req, res) => {
     });
 });
 
-// Login route for the user
+// Login route is similar to register route
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
@@ -80,7 +81,7 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Start the server on Port 3000, Can change if needed
+// Start server on port 3000
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

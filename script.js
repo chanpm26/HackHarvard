@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("Network response was not successful.");
+                    throw new Error("Network response was not ok");
                 }
                 return response.text();
             })
@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.getElementById(formId).reset();
                 }
                 if (message.includes("Login successful")) {
-                    // Redirect to a index or another route
-                    window.location.href = "/index.html"; 
+                    // Redirect to a dashboard or another route
+                    window.location.href = "/dashboard"; 
                 }
             })
             .catch(error => {
@@ -35,16 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     };
 
-    document.getElementById("registerForm").addEventListener("submit", handleFormSubmit('/register', "registerForm")); // registerForm is the id of the form
-    document.getElementById("loginForm").addEventListener("submit", handleFormSubmit('/login', "loginForm")); // loginForm is the id of the form
+    document.getElementById("registerForm").addEventListener("submit", handleFormSubmit('/register', "registerForm"));
+    document.getElementById("loginForm").addEventListener("submit", handleFormSubmit('/login', "loginForm"));
 });
 
-// Game save function to local storage
+// Game save and load functions
 function save() {
     localStorage.setItem('player', JSON.stringify(player));
     localStorage.setItem('score', JSON.stringify(score));
 }
-// Load game data from local storage
+
 function load() {
     player = JSON.parse(localStorage.getItem('player'));
     score = JSON.parse(localStorage.getItem('score'));
