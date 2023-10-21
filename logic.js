@@ -16,9 +16,9 @@ function generateRandomNumber(round) {
             number = Math.floor(Math.random() * 101);
         }
     } else {
-        number = Math.floor(Math.random() * 201);
+        number = Math.floor(Math.random() * 251);
         while (checkPreviousNumbers(number, previousNumbers)) {
-            number = Math.floor(Math.random() * 201);
+            number = Math.floor(Math.random() * 251);
         }
     }
     return number;
@@ -31,3 +31,5 @@ function checkPreviousNumbers(number, array) {
     })
     return duplicate;
 }
+
+export {round};
