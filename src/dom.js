@@ -29,6 +29,7 @@ function displayResponse(relativeGuess, tries) {
     }
 }
 
+// shows login screen on click of login button
 function showLogIn() {
     let loginButton = document.getElementById('login');
     let screens = Array.from(document.getElementsByClassName('screen'));
@@ -39,6 +40,7 @@ function showLogIn() {
     })
 }
 
+// shows register screen on click of register button
 function showRegister() {
     let registerButton = document.getElementById('register');
     let screens = Array.from(document.getElementsByClassName('screen'));
@@ -49,6 +51,7 @@ function showRegister() {
     })
 }
 
+// takes screen back to the select mode screen on click of home button
 function showHome() {
     let homeButton = document.getElementById('home');
     let screens = Array.from(document.getElementsByClassName('screen'));
