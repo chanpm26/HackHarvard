@@ -29,41 +29,5 @@ function displayResponse(relativeGuess, tries) {
     }
 }
 
-// shows login screen on click of login button
-function showLogIn() {
-    let loginButton = document.getElementById('login');
-    let screens = Array.from(document.getElementsByClassName('screen'));
-    let loginPopUp = document.getElementById('login-popup');
-    loginButton.addEventListener('click', function() {
-        screens.map((screen) => screen.classList.add('hidden'));
-        loginPopUp.classList.remove('hidden');
-    })
-}
-
-// shows register screen on click of register button
-function showRegister() {
-    let registerButton = document.getElementById('register');
-    let screens = Array.from(document.getElementsByClassName('screen'));
-    let registerPopUp = document.getElementById('register-popup');
-    registerButton.addEventListener('click', function() {
-        screens.map((screen) => screen.classList.add('hidden'));        
-        registerPopUp.classList.remove('hidden');
-    })
-}
-
-// takes screen back to the select mode screen on click of home button
-function showHome() {
-    let homeButton = document.getElementById('home');
-    let screens = Array.from(document.getElementsByClassName('screen'));
-    let modeScreen = document.getElementById('mode-select-screen');
-    homeButton.addEventListener('click', function() {
-        screens.map((screen) => screen.classList.add('hidden'));
-        modeScreen.classList.remove('hidden');
-    })
-}
-
-showLogIn();
-showRegister();
-showHome();
 
 export { displayResponse, displayRoundAndTries, displayNumberRange };
