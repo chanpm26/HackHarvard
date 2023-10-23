@@ -106,18 +106,20 @@ button {
     font-size: 0.9rem;
 }
 
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 0.9rem;
+}
+
 @media screen and (max-width: 800px) {
     h1 {
         font-size: 4rem;
     }
-    h2 {
-        font-size: 1.5rem;
-    }
-    p {
-        font-size: 1rem;
     }
     main > input {
-       font-size: 1rem;
-        width: 50vw;
+       font-size: 1.5rem;
+        max-width: 90vw;
     }
 }
