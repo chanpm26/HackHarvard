@@ -107,7 +107,7 @@ button {
     font-size: 0.9rem;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
     h1 {
         font-size: 4rem;
     }
