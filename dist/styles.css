@@ -111,13 +111,14 @@ button {
     h1 {
         font-size: 4rem;
     }
-    h2, main > input {
+    h2 {
         font-size: 1.5rem;
     }
     p {
         font-size: 1rem;
     }
-    
-
-
+    main > input {
+       font-size: 1rem;
+        width: 50vw;
+    }
 }
