@@ -10,6 +10,7 @@ body, main {
     padding: 0;
     background-color: #A51C30;
     color: white;
+    text-align: center;
 }
 
 .hidden {
@@ -115,11 +116,20 @@ footer {
 
 @media screen and (max-width: 800px) {
     h1 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
+    h2 {
+        font-size: 2rem;
+        margin-top: 5vh;
+    }
+    .small-text {
+        font-size: 1rem;
     }
     main > input {
-       font-size: 1.5rem;
+       font-size: 2rem;
         max-width: 90vw;
+    }
+    p {
+        font-size: 1.2rem;
     }
 }
