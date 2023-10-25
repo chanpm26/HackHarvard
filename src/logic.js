@@ -1,6 +1,12 @@
 
 let previousNumbers = [];
 
+function createMode(playerCount) {
+    if (playerCount == 1) {
+
+    }
+}
+
 // function that determines the number of tries 
 // that a player has dependent on the mode selected
 function createTries(mode, round) {
@@ -77,18 +83,23 @@ function acceptPlayerInput() {
 }
 
 //function to check whether the player guess is correct
-function checkPlayerGuess(guess, number, tries) {
-    let relativeGuess;
-    if (number == guess) {
-        relativeGuess = 0;
-        previousNumbers.push(number);
-    } else if (guess > number) {
-        relativeGuess = 1;
-    } else if (guess < number) {
-        relativeGuess = -1;
+function checkPlayerGuess(guess, number) {
+    if (isNaN(guess)) {
+        return 2;
+    } else {
+        let relativeGuess;
+        if (number == guess) {
+            relativeGuess = 0;
+            previousNumbers.push(number);
+        } else if (guess > number) {
+            relativeGuess = 1;
+        } else if (guess < number) {
+            relativeGuess = -1;
+        }
+        return relativeGuess;
     }
-    return relativeGuess;
 }
+
 
 
 export {generateRandomNumber,  checkPlayerGuess, acceptPlayerInput, createTries};

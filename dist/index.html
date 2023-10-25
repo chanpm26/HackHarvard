@@ -11,8 +11,8 @@
         <section class="screen" id="player-screen">
             <div class="mode-buttons">
                 <h3>Select A Mode</h3>
-                <button class="mode-button" id="one-player">One Player</button>
-                <button class="mode-button" id="two-player">Two Player</button>
+                <button class="mode-button player-button" id="one-player">One Player</button>
+                <button class="mode-button player-button" id="two-player">Two Player</button>
             </div>
         </section>
         <section class="screen hidden" id="difficulty-screen">
@@ -25,6 +25,7 @@
         </section>
         <main class="screen hidden" id="main">
             <p id="description">Guess the number that the computer has randomly picked.</p>
+            <h2 class="hidden" id="current-player"></h2>
             <h2 id="round"></h2>
             <p class="small-text" id="number-range">The range is from: </p>
             <input type="text" id="player-input"> </input>

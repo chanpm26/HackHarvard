@@ -38,6 +38,11 @@ body, main {
     border: none;
 }
 
+.player-button {
+    font-family: 'Noto Serif Malayalam', serif;
+    padding: 2vh;
+}
+
 #difficulty-screen {
     display: flex;
     flex-direction: column;
@@ -61,7 +66,7 @@ h2 {
     padding-bottom: 0;
     margin-bottom: 0;
     font-size: 3rem;
-    margin-top: 10vh;
+    margin-top: 5vh;
 }
 
 h3 {
@@ -79,6 +84,7 @@ main > input {
     margin-top: 5vh;
     font-size: 3rem;
     text-align: center;
+    max-width: 100vw;
 }
 
 button {
@@ -106,15 +112,38 @@ button {
     font-size: 0.9rem;
 }
 
-@media (max-width: 800px) {
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 0.9rem;
+}
+
+#current-player {
+    background-color: black;
+    padding: 1vw;
+    font-size: 2.5rem;
+}
+
+@media screen and (max-width: 800px) {
     h1 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
     h2 {
         font-size: 2rem;
+        margin-top: 2.5vh;
     }
-    input {
-        font-size: 1.5rem;
+    .small-text {
+        font-size: 1rem;
     }
-
+    #current-player {
+        font-size: 1.75rem;
+    }
+    main > input {
+       font-size: 2rem;
+        max-width: 90vw;
+    }
+    p {
+        font-size: 1.2rem;
+    }
 }
