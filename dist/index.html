@@ -8,9 +8,16 @@
     </head>
     <body>
         <h1 id="game-header">Guess The Number</h1>
-        <section class="screen" id="mode-select-screen">
+        <section class="screen" id="player-screen">
             <div class="mode-buttons">
                 <h3>Select A Mode</h3>
+                <button class="mode-button" id="one-player">One Player</button>
+                <button class="mode-button" id="two-player">Two Player</button>
+            </div>
+        </section>
+        <section class="screen hidden" id="difficulty-screen">
+            <div class="mode-buttons">
+                <h3>Select A Difficulty</h3>
                 <button class="mode-button" id="easy">Easy</button>
                 <button class="mode-button" id="medium">Medium</button>
                 <button class="mode-button" id="hard">Hard</button>

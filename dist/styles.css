@@ -38,7 +38,7 @@ body, main {
     border: none;
 }
 
-#mode-select-screen {
+#difficulty-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,6 +110,11 @@ button {
     h1 {
         font-size: 4rem;
     }
-
+    h2 {
+        font-size: 2rem;
+    }
+    input {
+        font-size: 1.5rem;
+    }
 
 }
