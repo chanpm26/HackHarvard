@@ -56,6 +56,25 @@ function displayCurrentPlayer(player) {
   }
 }
 
+function displayTwoPlayerDescription() {
+  let description = document.getElementById('description') 
+  description.innerText = "You are in two player mode. Players will take turns guessing the number for 10 rounds. The score is counted by totaling the number of tries a player takes to guess a number correctly. Like golf, whichever player has the LOWER score at the end wins."
+  description.style.fontSize = "1.3rem";
+}
+
+function displayTwoPlayerScores(playerOneScore, playerTwoScore, winner) {
+  let scoreScreen = document.getElementById('player-scores');
+  let mainScreen = document.getElementById("main");
+  let playerOneScoreContainer = document.getElementById('player-one-score');
+  playerOneScoreContainer.innerText = `Player One Score: ${playerOneScore}`;
+  let playerTwoScoreContainer = document.getElementById('player-two-score');
+  playerTwoScoreContainer.innerText = `Player Two Score: ${playerTwoScore}`;
+  let winnerContainer = document.getElementById('winner');
+  winnerContainer.innerText = winner;
+  mainScreen.classList.add('hidden');
+  scoreScreen.classList.remove('hidden');
+} 
+
 export {
   displayResponse,
   displayRoundAndTries,
@@ -63,4 +82,6 @@ export {
   showDifficultyModeScreen,
   showMainScreen,
   displayCurrentPlayer,
+  displayTwoPlayerDescription,
+  displayTwoPlayerScores,
 };

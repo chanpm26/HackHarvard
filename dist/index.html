@@ -25,14 +25,20 @@
         </section>
         <main class="screen hidden" id="main">
             <p id="description">Guess the number that the computer has randomly picked.</p>
-            <h2 class="hidden" id="current-player"></h2>
             <h2 id="round"></h2>
             <p class="small-text" id="number-range">The range is from: </p>
+            <h2 class="hidden" id="current-player"></h2>
             <input type="text" id="player-input"> </input>
             <p class="small-text">Enter your guess in the box above. Whole numbers only.</p>
             <button id="submit">Submit</button>
             <p id="over-or-under"></p>
         </main>
+        <section class="screen hidden" id="player-scores">
+            <p id="player-one-score"></p>
+            <p id="player-two-score"></p>
+            <p id="winner"></p>
+            <button id="restart">Restart</button>
+        </section>
         <footer id="footer">Built for HackHarvard 2023</footer>
     </body>
     <script type="module" src="main.js"></script>

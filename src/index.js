@@ -1,70 +1,17 @@
 import {
-  generateRandomNumber,
   createTries,
-  acceptPlayerInput,
-  checkPlayerGuess,
-  switchPlayer,
 } from "./logic";
 import {
-  displayNumberRange,
-  displayRoundAndTries,
   showDifficultyModeScreen,
-  displayResponse,
   showMainScreen,
-  displayCurrentPlayer,
 } from "./dom";
+import {
+  playGameSinglePlayer
+} from "./singlePlayer"
+import { playGameTwoPlayer } from "./twoPlayer";
 
 let round = 1;
-let submitButton = document.getElementById("submit");
-let inputForm = document.getElementById("player-input");
 let tries, mode, playerCount;
-let currentPlayer = 1;
-
-// function to validate the player's guess and controls
-// the display of tries and rounds
-function singlePlayerValidateGuess(targetNumber, tries) {
-  let playerGuess, currentTries;
-  currentTries = tries;
-  if (currentTries > 0) {
-    playerGuess = acceptPlayerInput();
-    let output = checkPlayerGuess(playerGuess, targetNumber, currentTries);
-    displayResponse(output);
-    // if correct then move to next round
-    if (output == 0) {
-      round++;
-      tries = createTries(mode, round);
-      playGameSinglePlayer(tries);
-      // if incorrect, tries goes down
-    } else if (output != 2) {
-      currentTries--;
-      displayRoundAndTries(round, currentTries);
-      return -1;
-    }
-  } else {
-    // if out of tries, the page refreshes to start over
-    location.reload();
-  }
-}
-
-// function that runs the game
-function playGameSinglePlayer(tries) {
-  //displays information about round, tries left and range
-  displayRoundAndTries(round, tries);
-  displayNumberRange(round);
-  let targetNumber = generateRandomNumber(round);
-  inputForm.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      // updates the tries # parameter if the guess was incorrect
-      let triesCheck = singlePlayerValidateGuess(targetNumber, tries);
-      if (triesCheck == -1) tries--;
-    }
-  });
-  submitButton.addEventListener("click", function () {
-    // updates the tries # parameter if the guess was incorrect
-    let triesCheck = singlePlayerValidateGuess(targetNumber, tries);
-    if (triesCheck == -1) tries--;
-  });
-}
 
 //function that shows the difficulty mode screen
 function pickPlayerMode() {
@@ -82,15 +29,6 @@ function pickPlayerMode() {
   });
 }
 
-function playCorrectMode(tries, playerCount) {
-    if (playerCount == 2) {
-        playGameTwoPlayer(tries);
-    }
-    else {
-        playGameSinglePlayer(tries);
-    }
-}
-
 // function that displays the main game screen after selecting mode
 // and triggers the playGame() function with proper difficulty
 function pickGameDifficulty() {
@@ -102,23 +40,33 @@ function pickGameDifficulty() {
     mode = "easy";
     let maxTries = createTries(mode, round);
     tries = maxTries;
-    playCorrectMode(tries, playerCount);
+    playCorrectMode(tries, maxTries, playerCount, round, mode);
   });
   mediumModeButton.addEventListener("click", function () {
     showMainScreen();
     mode = "medium";
     let maxTries = createTries(mode, round);
     tries = maxTries;
-    playCorrectMode(tries, playerCount);
+    playCorrectMode(tries, maxTries, playerCount, round, mode);
   });
   hardModeButton.addEventListener("click", function () {
     showMainScreen();
     mode = "hard";
     let maxTries = createTries(mode, round);
     tries = maxTries;
-    playCorrectMode(tries, playerCount);
+    playCorrectMode(tries, maxTries, playerCount, round, mode);
   });
 }
+
+function playCorrectMode(tries, maxTries, playerCount, round, mode) {
+  if (playerCount == 2) {
+      playGameTwoPlayer(maxTries, tries, round, mode);
+  }
+  else {
+      playGameSinglePlayer(tries, round, mode);
+  }
+}
+
 
 function runGame() {
   pickPlayerMode();
