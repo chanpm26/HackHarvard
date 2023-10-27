@@ -58,7 +58,7 @@ function displayCurrentPlayer(player) {
 
 function displayTwoPlayerDescription() {
   let description = document.getElementById('description') 
-  description.innerText = "You are in two player mode. Players will take turns guessing the number for 10 rounds. The score is counted by totaling the number of tries a player takes to guess a number correctly. Like golf, whichever player has the LOWER score at the end wins."
+  description.innerText = "You are in two player mode. Players will take turns guessing the number for 5 rounds. The score is counted by totaling the number of tries a player takes to guess a number correctly. Like golf, whichever player has the LOWER score at the end wins."
   description.style.fontSize = "1.3rem";
 }
 

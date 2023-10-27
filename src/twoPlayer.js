@@ -45,8 +45,7 @@ function playGameTwoPlayer(maxTries, tries, round, mode) {
   displayNumberRange(round);
   displayCurrentPlayer(currentPlayer);
   let targetNumber = generateRandomNumber(round);
-  console.log(targetNumber);
-  if (round < 11) {
+  if (round < 6) {
     inputForm.addEventListener("keypress", function (event) {
       if (event.key === "Enter") {
         // updates the tries # parameter if the guess was incorrect

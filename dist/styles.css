@@ -56,6 +56,7 @@ main {
 }
 
 
+
 h1 {
     font-family: 'Montserrat Subrayada', sans-serif;
     font-size: 5rem;
@@ -129,6 +130,14 @@ footer {
     padding: 1vw;
     font-size: 2rem;
     margin: 0;
+}
+
+#player-scorea {
+    text-align: center;
+}
+
+#player-scores > h3 {
+    color: white;
 }
 
 @media screen and (max-width: 800px) {
